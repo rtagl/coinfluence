@@ -1,0 +1,17 @@
+
+<h2>Post a comment</h2>
+<form action="/socials" method="POST" enctype="multipart/form-data">
+  <label>Comment</label>
+  <input type="text" name="comment">
+
+  <label>Upload an image</label>
+  <input type="file" name="photo">
+
+  <input type="submit" value="SAVE">
+</form>
+
+<div>
+  {{#each posts}}
+    <h4>{{this.comment}}</h4>
+  {{/each}}
+</div>

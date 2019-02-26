@@ -1,8 +1,21 @@
 body {
-  padding: 50px;
+  padding: 0;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
 
-a {
-  color: #00B7FF; }
+.navbar {
+  font-family: 'Raleway', Arial; }
+
+.bg-light {
+  background-color: #040706 !important; }
+
+.btn-outline-success {
+  color: #33ff00;
+  background-color: #08042c; }
+
+.navbar-light .navbar-brand {
+  color: rgba(51, 255, 0, 0.9); }
+
+.navbar-light .navbar-nav .nav-link {
+  color: rgba(51, 255, 0, 0.9); }
 
 /*# sourceMappingURL=style.css.map */
