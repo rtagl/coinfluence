@@ -18,4 +18,19 @@ body {
 .navbar-light .navbar-nav .nav-link {
   color: rgba(51, 255, 0, 0.9); }
 
+.social-page {
+  margin-left: 20px; }
+
+.error-message {
+  background: #F02B63;
+  box-sizing: border-box;
+  color: #fff;
+  margin: 20px auto;
+  padding: 20px;
+  width: 100%; }
+
+.image-size {
+  width: 200px;
+  height: auto; }
+
 /*# sourceMappingURL=style.css.map */

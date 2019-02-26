@@ -1,17 +1,25 @@
+<div class="social-page">
+  <h2>Post a comment</h2>
+  <form action="/socials" method="POST" enctype="multipart/form-data">
 
-<h2>Post a comment</h2>
-<form action="/socials" method="POST" enctype="multipart/form-data">
-  <label>Comment</label>
-  <input type="text" name="comment">
+    <div class="form-group">
+      <label for="comment">Comment:</label>
+      <textarea class="form-control" rows="5" id="comment" type="text" name="comment"></textarea>
+      {{!-- <input type="text" name="comment"> --}}
+    </div>
+    <label>Upload an image</label>
+    <input type="file" name="photo" value="">
 
-  <label>Upload an image</label>
-  <input type="file" name="photo">
-
-  <input type="submit" value="SAVE">
-</form>
-
-<div>
-  {{#each posts}}
+    <input type="submit" value="SAVE">
+      {{#if errorMessage}}
+      <div class="error-message">{{ errorMessage }}</div>
+      {{/if}}
+  </form>
+  <div>
+    {{#each posts}}
     <h4>{{this.comment}}</h4>
-  {{/each}}
+    <img class="image-size" src="{{this.imgPath}}" alt="">
+    <hr>
+    {{/each}}
+  </div>
 </div>

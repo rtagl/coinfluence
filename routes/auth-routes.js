@@ -19,9 +19,26 @@ router.get('/socials', (req, res, next) => {
     })
 })
 
-router.post('/socials', uploadCloud.single('photo'), (req, res, next) => {
+// Posting a comment
+router.post('/socials', uploadCloud.single('photo'), ensureLogin.ensureLoggedIn(), (req, res, next) => {
   const comment = req.body.comment;
-  const newPost = new Post({ comment })
+  console.log(comment, req.file)
+
+  const postedBy = req.user.id;
+  //const imgPath = req.file.url;
+  //console.log(!imgPath)
+  //console.log(comment === "")
+
+  if (comment === "" && !req.file) {
+    res.render("coin-posts", {
+      errorMessage: "Please add a comment or post a picture!"
+    });
+  } else {
+    let imgPath = ''
+    if(req.file){
+       imgPath = req.file.url;
+    } 
+  const newPost = new Post({ comment, postedBy, imgPath })
   newPost.save()
     .then(post => {
       res.redirect('/socials');
@@ -29,6 +46,7 @@ router.post('/socials', uploadCloud.single('photo'), (req, res, next) => {
     .catch(error => {
       console.log(error);
     })
+  }
 })
 
 //if we decide to have private page accessed only by logged in users it will go here:
