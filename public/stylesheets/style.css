@@ -1,12 +1,13 @@
 body {
   padding: 0;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: #d3cfc3; }
 
 .navbar {
   font-family: 'Raleway', Arial; }
 
 .bg-light {
-  background-color: #040706 !important; }
+  background-color: #431d9b !important; }
 
 .btn-outline-success {
   color: #33ff00;
@@ -19,7 +20,9 @@ body {
   color: rgba(51, 255, 0, 0.9); }
 
 .social-page {
-  margin-left: 20px; }
+  margin: 40 auto;
+  margin-top: 50px;
+  margin-bottom: 50px; }
 
 .error-message {
   background: #F02B63;
@@ -30,7 +33,21 @@ body {
   width: 100%; }
 
 .image-size {
-  width: 200px;
+  width: auto;
+  height: 50%;
+  display: block;
+  padding-top: 20px; }
+
+.comment-box {
+  font-family: 'Raleway', Arial;
+  height: 200px; }
+
+.user-info-comment {
+  width: 100%;
+  padding-bottom: 10px; }
+
+.icon {
+  width: 25px;
   height: auto; }
 
 /*# sourceMappingURL=style.css.map */

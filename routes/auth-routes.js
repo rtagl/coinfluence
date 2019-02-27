@@ -9,9 +9,13 @@ const ensureLogin = require("connect-ensure-login");
 
 const User = require("../models/user");
 
-router.get('/socials', (req, res, next) => {
+router.get('/:coin/social', (req, res, next) => {
+  console.log(req.params)
+  console.log(req.params.coin)
   Post.find().sort({ created_at: -1 })
+    .populate('postedBy')
     .then((posts) => {
+      console.log('posts',posts)
       res.render('coin-posts.hbs', { posts })
     })
     .catch((error) => {
@@ -20,14 +24,12 @@ router.get('/socials', (req, res, next) => {
 })
 
 // Posting a comment
-router.post('/socials', uploadCloud.single('photo'), ensureLogin.ensureLoggedIn(), (req, res, next) => {
+router.post('/:coin/social', uploadCloud.single('photo'), ensureLogin.ensureLoggedIn(), (req, res, next) => {
   const comment = req.body.comment;
   console.log(comment, req.file)
 
-  const postedBy = req.user.id;
-  //const imgPath = req.file.url;
-  //console.log(!imgPath)
-  //console.log(comment === "")
+  const postedBy = req.user.username
+  const postedOn = req.params.coin
 
   if (comment === "" && !req.file) {
     res.render("coin-posts", {
@@ -38,10 +40,10 @@ router.post('/socials', uploadCloud.single('photo'), ensureLogin.ensureLoggedIn(
     if(req.file){
        imgPath = req.file.url;
     } 
-  const newPost = new Post({ comment, postedBy, imgPath })
+  const newPost = new Post({ comment, postedOn, postedBy, imgPath })
   newPost.save()
     .then(post => {
-      res.redirect('/socials');
+      res.redirect('/:coin/social');
     })
     .catch(error => {
       console.log(error);

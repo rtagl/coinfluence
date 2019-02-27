@@ -1,13 +1,14 @@
 body {
   padding: 0;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: rgb(211, 207, 195);
 }
 
 .navbar {
   font-family: 'Raleway', Arial
 }
 .bg-light {
-  background-color: rgb(4, 7, 6)!important;
+  background-color: rgb(67, 29, 155)!important;
 }
 
 .btn-outline-success {
@@ -24,7 +25,9 @@ body {
 }
 
 .social-page {
-  margin-left: 20px;
+  margin: 40 auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
 
 .error-message {
@@ -37,6 +40,24 @@ body {
 }
 
 .image-size {
-  width: 200px;
+  width: auto;
+  height: 50%;
+  display: block;
+  padding-top: 20px;
+}
+
+.comment-box {
+  font-family: 'Raleway', Arial;
+  height: 200px;
+}
+
+.user-info-comment {
+  width: 100%;
+  padding-bottom: 10px;
+}
+
+.icon {
+  width: 25px;
   height: auto;
 }
+

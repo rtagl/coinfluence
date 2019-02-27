@@ -5,7 +5,7 @@ const User = require('./user.js');
 const postSchema = new Schema({
   comment: String, 
   postedBy: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
-  //postedTo: mongoose.Schema.Types.Coin,
+  postedOn: String,
   imgPath: String
 }, {
     timestamps: { createdAt: "created_at", updatedAt: "updated_at" }

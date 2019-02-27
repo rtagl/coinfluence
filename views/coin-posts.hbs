@@ -1,6 +1,6 @@
-<div class="social-page">
+<div class="container social-page col-lg-8">
   <h2>Post a comment</h2>
-  <form action="/socials" method="POST" enctype="multipart/form-data">
+  <form action="/{{this}}/social" method="POST" enctype="multipart/form-data">
 
     <div class="form-group">
       <label for="comment">Comment:</label>
@@ -17,9 +17,15 @@
   </form>
   <div>
     {{#each posts}}
-    <h4>{{this.comment}}</h4>
-    <img class="image-size" src="{{this.imgPath}}" alt="">
-    <hr>
+    <div class="comment-box">
+      <hr>
+      <div class="user-info-comment">
+        <img class="icon" src="{{this.postedBy.avatar}}" alt="">
+        <span>{{this.postedBy.username}}</span>
+      </div>
+      <span class="comment-inline">{{this.comment}}</span>
+      <img class="image-size" src="{{this.imgPath}}" alt="">
+    </div>
     {{/each}}
   </div>
 </div>
