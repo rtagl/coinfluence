@@ -30,6 +30,11 @@
         <li class="nav-item">
           <a class="nav-link" href="/signup">Signup</a>
         </li>
+        {{#if user}}
+        <li class="nav-item">
+          <a class="nav-link" href="/logout">Logout</a>
+        </li>
+        {{/if}}
       </ul>
       <form class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="search" placeholder="Search for a Coin" aria-label="Search">

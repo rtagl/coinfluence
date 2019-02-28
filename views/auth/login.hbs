@@ -1,18 +1,23 @@
-<h2>Login</h2>
 
-<form action="/login" method="POST">
-  <div>
-    <label for="username">Username:</label>
-    <input type="text" value="cryptobobby" name="username">
-  </div>
-  <div>
-    <label for="password">Password:</label>
-    <input type="password" value="password" name="password">
-  </div>
-  {{#if errorMessage}}
-  <div class="error-message">{{ errorMessage }}</div>
+<form action="/login" method="POST" id="form">
+
+  <label for="username">Username:</label>
+  <input type="text" name="username">
+
+  <br></br>
+
+  <label for="password">Password:</label>
+  <input type="password" name="password">
+
+  {{#if message}}
+    <div class="error-message">{{ message }}</div>
   {{/if}}
-  <div>
-    <input type="submit" value="Log In">
-  </div>
+
+  <br></br>
+  
+  <button>Log In</button>
+
+  <p class="account-message">
+    Don't have an account? <a href="/signup">Sign up</a>
+  </p>
 </form>

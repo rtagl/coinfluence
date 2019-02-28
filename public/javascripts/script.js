@@ -14,9 +14,10 @@ axios.get('https://api.coinstats.app/public/v1/coins')
     for(let i = 0; i <=19; i++) {
       const coinName = responseFromAPI.data.coins[i].name;
       const coinPrice = responseFromAPI.data.coins[i].price;
-      const icon = responseFromAPI.data.coins[i].icon
+      const icon = responseFromAPI.data.coins[i].icon;
+      const priceChange = responseFromAPI.data.coins[i].priceChange1d;
       console.log(coinName)
-      html += `<li><img src="${icon}"/>${coinName} : $${coinPrice.toFixed(2)}</li>`
+      html += `<li><img src="${icon}"/> ${coinName}  $${coinPrice.toFixed(2)} ${priceChange}% <a href="/${coinName.toLowerCase()}/social"><button>Socials</button></a></li>`
       //document.getElementById("coinPrice").innerHTML += coinPrice;
       //appendText();
     }

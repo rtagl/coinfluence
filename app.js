@@ -94,8 +94,6 @@ app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 app.locals.title = 'Express - Generated with IronGenerator';
 
 
-// app.use('/', require('./routes/site-routes'));
-
 app.use('/', require('./routes/site-routes'));
 
 

@@ -1,6 +1,6 @@
 <div class="container social-page col-lg-8">
   <h2>Post a comment</h2>
-  <form action="/{{this}}/social" method="POST" enctype="multipart/form-data">
+  <form action="/{{postedOn}}/social" method="POST" enctype="multipart/form-data">
 
     <div class="form-group">
       <label for="comment">Comment:</label>
@@ -11,10 +11,11 @@
     <input type="file" name="photo" value="">
 
     <input type="submit" value="SAVE">
-      {{#if errorMessage}}
-      <div class="error-message">{{ errorMessage }}</div>
-      {{/if}}
+    {{#if errorMessage}}
+    <div class="error-message">{{ errorMessage }}</div>
+    {{/if}}
   </form>
+
   <div>
     {{#each posts}}
     <div class="comment-box">
@@ -22,6 +23,8 @@
       <div class="user-info-comment">
         <img class="icon" src="{{this.postedBy.avatar}}" alt="">
         <span>{{this.postedBy.username}}</span>
+        <button>edit</button>
+        <a href="/comment/{{this._id}}"><button>delete</button></a>
       </div>
       <span class="comment-inline">{{this.comment}}</span>
       <img class="image-size" src="{{this.imgPath}}" alt="">

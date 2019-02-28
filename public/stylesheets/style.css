@@ -1,7 +1,7 @@
 body {
   padding: 0;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-color: #d3cfc3; }
+  background-color: rgba(235, 235, 235, 0.507); }
 
 .navbar {
   font-family: 'Raleway', Arial; }
@@ -24,14 +24,6 @@ body {
   margin-top: 50px;
   margin-bottom: 50px; }
 
-.error-message {
-  background: #F02B63;
-  box-sizing: border-box;
-  color: #fff;
-  margin: 20px auto;
-  padding: 20px;
-  width: 100%; }
-
 .image-size {
   width: auto;
   height: 50%;
@@ -49,5 +41,69 @@ body {
 .icon {
   width: 25px;
   height: auto; }
+
+.prices-table ul {
+  list-style-type: none; }
+
+.prices-table h2 {
+  font-size: 1rem;
+  font-family: 'Raleway', Arial; }
+
+.prices-table img {
+  width: 30px; }
+
+.prices-table {
+  margin-top: 50px; }
+
+.prices-table li {
+  padding-top: 45px;
+  padding-bottom: 45px; }
+
+#form {
+  margin: 30px auto;
+  width: 380px; }
+
+#form label {
+  color: #666;
+  display: inline-block;
+  margin-bottom: 10px;
+  text-align: center;
+  width: 100%; }
+
+#form input,
+#form button {
+  box-sizing: border-box;
+  font-size: 14px;
+  outline: 0;
+  padding: 4px;
+  width: 100%;
+  margin-bottom: 20px; }
+
+#form button {
+  background: #43a3e6;
+  border: 1px solid #43a3e6;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  padding: 8px 16px;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: .3s ease background;
+  width: 100%; }
+
+#form button:hover {
+  background: #fff;
+  color: #43a3e6;
+  transition: .3s ease background; }
+
+.error-message {
+  background: #F02B63;
+  box-sizing: border-box;
+  color: #fff;
+  margin: 20px auto;
+  padding: 20px;
+  width: 100%; }
 
 /*# sourceMappingURL=style.css.map */
