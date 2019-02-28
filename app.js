@@ -18,7 +18,7 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 
 mongoose
-  .connect('mongodb://localhost/coinfluence', {useNewUrlParser: true})
+  .connect(process.env.DATABASE, {useNewUrlParser: true})
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   })
