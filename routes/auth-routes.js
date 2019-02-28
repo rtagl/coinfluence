@@ -6,8 +6,8 @@ const Post = require('../models/post');
 const uploadCloud = require('../config/cloudinary.js');
 const router = express.Router();
 const ensureLogin = require("connect-ensure-login");
-// User model
 
+// User model
 const User = require("../models/user");
 
 // Get route to find discussion page and comments for a specific coin
@@ -17,7 +17,14 @@ router.get('/:coin/social', (req, res, next) => {
     .populate('postedBy')
     .then((posts) => {
       console.log(posts)
-      res.render('coin-posts.hbs', { posts, postedOn:req.params.coin })
+      posts.forEach(post=>{ 
+        if(req.user && String(post.postedBy._id) === String(req.user._id)){
+          console.log('r we in her')
+          post['owner'] = true;
+        }
+      })
+      console.log(posts)
+      res.render('coin-posts.hbs', { posts, postedOn:req.params.coin, user: req.user })
     })
     .catch((error) => {
       console.log(error);
@@ -33,9 +40,9 @@ router.post('/:coin/social', uploadCloud.single('photo'), ensureLogin.ensureLogg
   const postedOn = req.params.coin
   console.log(postedOn)
   if (comment === "" && !req.file) {
-    res.render("coin-posts", {
+    res.render('coin-posts'), {
       errorMessage: "Please add a comment or post a picture!"
-    });
+    }
   } else {
     let imgPath = ''
     if(req.file){
@@ -52,6 +59,31 @@ router.post('/:coin/social', uploadCloud.single('photo'), ensureLogin.ensureLogg
   }
 })
 
+router.get('/comment/:id/delete', (req, res, next) => {
+  Post.findByIdAndDelete(req.params.id)
+  .then(post => {
+    res.redirect(`/${post.postedOn}/social`);
+  })
+  .catch(error => {
+    console.log(error)
+  })
+})
+
+router.post('/comment/:id/edit', (req, res, next) => {
+  console.log(req.body, req.params, 'never gets old')
+  Post.findById(req.params.id).then(post=>{
+    post.comment = req.body.comment;
+    post.save((err)=>{
+      if(!err){
+        res.json({ 'updated': true })
+      }
+    })
+  })
+})
+
+//profile page
+
+
 //if we decide to have private page accessed only by logged in users it will go here:
 router.get("/private", ensureLogin.ensureLoggedIn(), (req, res, next) => {
   res.render("private", { user: req.user });
@@ -62,5 +94,6 @@ router.get("/logout", (req, res) => {
   req.logout();
   res.redirect("/");
 });
+
 
 module.exports = router;

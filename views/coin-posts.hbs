@@ -4,7 +4,7 @@
 
     <div class="form-group">
       <label for="comment">Comment:</label>
-      <textarea class="form-control" rows="5" id="comment" type="text" name="comment"></textarea>
+      <textarea class="form-control" rows="4" id="comment" type="text" name="comment"></textarea>
       {{!-- <input type="text" name="comment"> --}}
     </div>
     <label>Upload an image</label>
@@ -23,12 +23,28 @@
       <div class="user-info-comment">
         <img class="icon" src="{{this.postedBy.avatar}}" alt="">
         <span>{{this.postedBy.username}}</span>
-        <button>edit</button>
-        <a href="/comment/{{this._id}}"><button>delete</button></a>
+        {{#if owner}}
+          <a href="/comment/{{this._id}}/delete"><button>delete post</button></a>
       </div>
-      <span class="comment-inline">{{this.comment}}</span>
+          <span class="edit-text">click text to edit</span>
+          <a href="/{{this.postedOn}}/social"><button>save</button></a>
+      <br></br>
+          <span class="comment-inline" data-id={{this._id}} contenteditable="true">{{this.comment}}</span>
+        {{else}}
+      </div>
+          <span class="comment-inline" contenteditable="false">{{this.comment}}</span>
+        {{/if}}
       <img class="image-size" src="{{this.imgPath}}" alt="">
     </div>
     {{/each}}
   </div>
 </div>
+
+<script>
+  $('.comment-inline').blur(function(e){
+    console.log(e,this);
+    $.post(`/comment/${$(this).data('id')}/edit`, {comment:$(this).text()}, function(res){
+      console.log(res, 'saved')
+    })
+  })
+</script>
