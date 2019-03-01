@@ -2,6 +2,7 @@
 <div class="container social-page col-lg-8">
 
   <img src="{{user.avatar}}" alt="">
+  <br></br>
   <button>Change Picture</button>
   <h4 class="username">{{user.username}}</h4>
   <h5>My Posts: </h5>
@@ -9,6 +10,7 @@
 
   <div class="comment-box">
     <hr>
+    <h6 class="my-posts">{{this.postedOn}}</h6>
     <span class="comment-inline">{{this.comment}}</span>
     
     {{/each }}
