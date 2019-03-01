@@ -1,0 +1,18 @@
+
+<div class="container social-page col-lg-8">
+
+  <img src="{{user.avatar}}" alt="">
+  <h4 class="username">{{user.username}}</h4>
+  <h5>My Posts: </h5>
+  {{#each post}}
+
+  <div class="comment-box">
+    <hr>
+    <span class="comment-inline">{{this.comment}}</span>
+    
+    {{/each }}
+
+  </div>
+
+</div>
+

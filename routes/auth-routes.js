@@ -19,7 +19,6 @@ router.get('/:coin/social', (req, res, next) => {
       console.log(posts)
       posts.forEach(post=>{ 
         if(req.user && String(post.postedBy._id) === String(req.user._id)){
-          console.log('r we in her')
           post['owner'] = true;
         }
       })
@@ -80,8 +79,6 @@ router.post('/comment/:id/edit', (req, res, next) => {
     })
   })
 })
-
-//profile page
 
 
 //if we decide to have private page accessed only by logged in users it will go here:

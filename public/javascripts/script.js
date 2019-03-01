@@ -17,7 +17,15 @@ axios.get('https://api.coinstats.app/public/v1/coins')
       const icon = responseFromAPI.data.coins[i].icon;
       const priceChange = responseFromAPI.data.coins[i].priceChange1d;
       console.log(coinName)
-      html += `<li><img src="${icon}"/> ${coinName}  $${coinPrice.toFixed(2)} ${priceChange}% <a href="/${coinName.toLowerCase()}/social"><button>Socials</button></a></li>`
+      html += 
+      `<li>
+        <img src="${icon}"/> 
+        <a class="col-lg-3" href="/${coinName.toLowerCase()}/social"><span> ${coinName} </span></a>
+        <span class="col-lg-3"> $${coinPrice.toFixed(2)}</span>
+        <span class="col-lg-3"> ${Number(priceChange)}%</span>
+        <a class="col-lg-3" href="/${coinName.toLowerCase()}/social">
+        <button>Socials</button></a>
+      </li>`
       //document.getElementById("coinPrice").innerHTML += coinPrice;
       //appendText();
     }
@@ -35,3 +43,4 @@ axios.get('https://api.coinstats.app/public/v1/coins')
       console.log('err => ', err)
     }
   })
+
