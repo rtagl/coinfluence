@@ -8,10 +8,11 @@
   <h5>My Posts: </h5>
   {{#each post}}
 
-  <div class="comment-box">
+  <div class="comment-box comment-size">
     <hr>
     <h6 class="my-posts">{{this.postedOn}}</h6>
     <span class="comment-inline">{{this.comment}}</span>
+    <img class="image-size" src="{{this.imgPath}}" alt="">
     
     {{/each }}
 
