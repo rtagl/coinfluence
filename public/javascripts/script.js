@@ -15,23 +15,34 @@ axios.get('https://api.coinstats.app/public/v1/coins')
       const coinName = responseFromAPI.data.coins[i].name;
       const coinPrice = responseFromAPI.data.coins[i].price;
       const icon = responseFromAPI.data.coins[i].icon;
-      const priceChange = responseFromAPI.data.coins[i].priceChange1d;
-      console.log(coinName)
+      const priceChange = Number(responseFromAPI.data.coins[i].priceChange1d);
       html += 
-      `<li>
+      `
+      <li>
         <img src="${icon}"/> 
         <a class="col-lg-3" href="/${coinName.toLowerCase()}/social"><span> ${coinName} </span></a>
         <span class="col-lg-3"> $${coinPrice.toFixed(2)}</span>
-        <span class="col-lg-3"> ${Number(priceChange)}%</span>
+        <span class="col-lg-3 percent-change"> ${priceChange}</span>
         <a class="col-lg-3" href="/${coinName.toLowerCase()}/social">
         <button>Socials</button></a>
-      </li>`
-      //document.getElementById("coinPrice").innerHTML += coinPrice;
-      //appendText();
+      </li>
+      `
     }
   document.getElementById("coinName").innerHTML = `<ul>${html}</ul>`
 
-    // instead in the console, show data in the browser using JS DOM manipulation:
+  $('.percent-change').each(function (e) {
+    //$(this).css({ color: 'red' })
+    console.log(this.innerHTML)
+    console.log('test')
+    if (this.innerHTML < 0) {
+      this.style.color = "red";
+      this.innerHTML += '%'
+    } else {
+      this.style.color = "green";
+      this.innerHTML += '%'
+    }
+  });
+
   })
   .catch(err => {
     if (err.response.status === 404) {
@@ -43,4 +54,5 @@ axios.get('https://api.coinstats.app/public/v1/coins')
       console.log('err => ', err)
     }
   })
+
 

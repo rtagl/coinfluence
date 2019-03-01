@@ -28,6 +28,7 @@ body {
   margin: 40 auto;
   margin-top: 50px;
   margin-bottom: 50px;
+  font-family: 'Raleway', Arial;
 }
 
 
@@ -158,9 +159,51 @@ body {
 }
 
 .home-page li {
-  padding-bottom: 30px;
+  padding-bottom: 15px;
+  padding-top: 15px;
+  padding-left: 50px;
 }
 
 .header {
   padding-bottom: 40px;
+}
+
+.home-page a {
+  text-decoration: none;
+  color: black;
+}
+
+.table-row {
+  font-size: 1.1rem;
+  padding-bottom: 20px;
+  padding-left: 40px;
+  padding-right: 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.table-row span {
+  margin-left: 12px;
+}
+
+.red {
+  color: rgb(160, 6, 6)
+}
+
+.green {
+  color: rgb(9, 90, 9)
+}
+
+.home-page li:hover {
+  background-color: rgb(206, 197, 197);
+  border-radius: 10px;
+}
+
+.home-page ul {
+  padding-left: 0;
+}
+
+
+.navbar a:hover {
+  color: white;
 }
