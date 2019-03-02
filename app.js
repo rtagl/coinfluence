@@ -70,11 +70,8 @@ passport.use(new LocalStrategy({
     if (err) {
       return next(err);
     }
-    if (!user) {
-      return next(null, false, { message: "Incorrect username" });
-    }
-    if (!bcrypt.compareSync(password, user.password)) {
-      return next(null, false, { message: "Incorrect password" });
+    if (!user || !bcrypt.compareSync(password, user.password)) {
+      return next(null, false, { message: "Incorrect username or password" });
     }
 
     return next(null, user);
