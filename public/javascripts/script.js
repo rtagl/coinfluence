@@ -24,7 +24,7 @@ axios.get('https://api.coinstats.app/public/v1/coins')
         <span class="col-lg-3"> $${coinPrice.toFixed(2)}</span>
         <span class="col-lg-3 percent-change"> ${priceChange}</span>
         <a class="col-lg-3" href="/${coinName.toLowerCase()}/social">
-        <button>Socials</button></a>
+        <button class="socials-button">Socials</button></a>
       </li>
       `
     }
